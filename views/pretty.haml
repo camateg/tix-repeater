@@ -1,0 +1,44 @@
+%html
+  %head
+    %title
+      =locals[:state] 
+    %link{:href=>'//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',:rel=>'stylesheet'} 
+  %body
+    %div{:style=>'border: 1px dotted black; margin: 10px; padding: 10px; text-align: center;'}
+      %a{:href=>"/data/#{locals[:state]}/csv"}
+        %img{:src=>"/csv.png"}
+    %div{:class=>'table-responsive'}
+      %table{:class=>'table table-responsive table-striped'}
+        %thead
+          %tr
+            %td
+              Output
+            %td
+              Input
+            %td
+              Tone Out
+            %td
+              Tone In
+            %td
+              Callsign
+            %td
+              Description
+            %td
+              County
+        %tbody
+          -locals[:state_data].each do |d|
+            %tr
+              %td
+                =d['output']
+              %td
+                =d['input']
+              %td
+                =d['tone_out']
+              %td
+                =d['tone_in']
+              %td
+                =d['call_sign']
+              %td
+                =d['desc']
+              %td
+                =d['county']
